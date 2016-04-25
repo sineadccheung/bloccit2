@@ -24,6 +24,14 @@ end
 end
 topics = Topic.all
 
+15.times do
+  SponsoredPost.create!(
+  title:
+  body:
+  price:
+  )
+end
+
 50.times do
   Post.create!(
     topic: topics.sample,
@@ -36,3 +44,4 @@ puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{SponsoredPost.count} sponsored posts created"
