@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427131902) do
+ActiveRecord::Schema.define(version: 20160430175452) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "title"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 20160427131902) do
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
 
+  create_table "somethings", force: :cascade do |t|
+    t.string   "fish"
+    t.string   "cake"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sponsored_posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -57,6 +64,15 @@ ActiveRecord::Schema.define(version: 20160427131902) do
     t.text     "description"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "string"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
