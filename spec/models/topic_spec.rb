@@ -7,7 +7,9 @@ RSpec.describe Topic, type: :model do
   let(:topic) { Topic.create!(name: name, description: description)}
 
   it { is_expected.to have_many(:posts)}
-  # it { is_expected.to have_many(:sponsored_posts)}
+  it { is_expected.to have_many(:labelings)}
+  it { is_expected.to have_many(:labels).through(:labelings)}
+
 
   it { is_expected.to validate_length_of(:name).is_at_least(5) }
   it { is_expected.to validate_length_of(:description).is_at_least(15) }
