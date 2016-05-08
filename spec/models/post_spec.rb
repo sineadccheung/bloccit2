@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+
+
   let(:post) { Post.create!(title: "New Post Title", body: "New Post Body")}
   let(:name) { RandomData.random_sentence }
   let(:description) { RandomData.random_paragraph }
@@ -10,6 +12,9 @@ RSpec.describe Post, type: :model do
   let(:topic) { Topic.create!(name: name, description: description)}
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld")}
   let(:post) { topic.posts.create!(title: title, body: body, user: user)}
+
+  it { is_expected.to have_many(:labelings) }
+  it { is_expected.to have_many(:labels).through(:labelings) }
 
   it { is_expected.to have_many(:comments)}
 
