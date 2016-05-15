@@ -1,13 +1,3 @@
-
-
- <%= content_tag :div, class: 'media', id: "favorite-#{favorite.id}" do %>
-<div class= "media">
- <div class= "media-body">
-   <p> <%= favorite.post.body %></p>
- </div>
-</div>
-<% end %>
-
 <% if favorite = current_user.favorite_for(post) %>
 
    <%= link_to [post, favorite], class: 'btn btn-danger', method: :delete do %>
@@ -18,4 +8,12 @@
    <%= link_to [post, Favorite.new], class: 'btn btn-primary', method: :post do %>
      <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite
    <% end %>
+ <% end %>
+
+ <%= content_tag :div, class: 'media', id: "favorite-#{favorite.id}" do %>
+ <div class= "media">
+  <div class= "media-body">
+    <p> <%= favorite.post.body %></p>
+  </div>
+ </div>
  <% end %>
