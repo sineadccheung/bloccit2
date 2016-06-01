@@ -7,6 +7,7 @@ RSpec.describe Comment, type: :model do
   let(:comment) {Comment.create!(body: 'Comment Body', post: post, user: user)}
 
   it { is_expected.to belong_to(:post)}
+  it { is_expected.to belong_to(:topic)}
   it { is_expected.to belong_to(:user)}
 
   it { is_expected.to validate_presence_of(:body)}
@@ -17,4 +18,17 @@ RSpec.describe Comment, type: :model do
       expect(comment).to have_attributes(body: "Comment Body")
     end
   end
+
+  describe "commenting" do
+       it "allows the same comment to be associated with a different topic and post" do
+         topic.comments << comment
+         post.comments << comment
+
+         topic_comment = topic.comment[0]
+         post_comment = post.comment[0]
+   # #11
+         expect(topic_comment).to eql(post_comment)
+       end
+     end
+
 end
