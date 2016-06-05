@@ -28,7 +28,7 @@
      <% if current_user %>
  <!-- #20 -->
  <div class='new-comment'>
-    <%= render 'comments/form', comment: Comment.new, post: @post %>
+    <%= render 'comments/form', comment: Comment.new, parent: @post %>
   </div>
    <% end %>
    </div>
